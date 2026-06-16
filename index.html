@@ -405,18 +405,18 @@
         <div id="baking-app" class="container">
             <!-- 인트로 화면 -->
             <div id="screen-intro" class="screen active">
-                <div class="intro-icon">🧑‍🍳✨</div>
+                <div class="intro-icon">🪄✨</div>
                 <h1 style="color: #ff8b94; font-size: 32px;">안녕! 몽글몽글 공방이야 🎈</h1>
                 <p class="subtitle" style="font-size: 18px; margin-bottom: 30px;">
-                    오늘은 어떤 맛있는 디저트를 만들어볼까?<br>
+                    오늘은 어떤 달콤한 디저트를 만들어볼까?<br>
                     너만의 상상력을 마음껏 발휘해봐!
                 </p>
-                <button class="btn" onclick="startAdventure()">👉 빵 굽기 시작하기 👈</button>
+                <button class="btn" onclick="startAdventure()">👉 디저트 마법 시작하기 👈</button>
             </div>
 
             <div id="screen-select" class="screen">
                 <h1>몽글몽글 디저트 공방</h1>
-                <p class="subtitle">어떤 재료로 디저트를 구워볼까요?</p>
+                <p class="subtitle">어떤 재료로 디저트를 만들어볼까요?</p>
                 
                 <div class="ingredients-grid">
                     <div class="ingredient" data-val="생크림"><span class="icon">☁️</span>생크림</div>
@@ -434,30 +434,17 @@
                     <div class="ingredient" data-val="설탕"><span class="icon">✨</span>설탕</div>
                 </div>
 
-                <button class="btn" onclick="startBaking()">오븐에 넣기 굽기!</button>
+                <button class="btn" onclick="startBaking()">오븐에 마법 넣기!</button>
             </div>
 
             <div id="screen-loading" class="screen">
                 <br><br>
-                <!-- SVG 요술봉 애니메이션 -->
-                <svg class="loading-svg" viewBox="0 0 100 100">
-                    <!-- 반짝임 효과들 -->
-                    <circle class="sparkle" cx="20" cy="20" r="3" fill="#ffb6c1" />
-                    <circle class="sparkle" cx="80" cy="30" r="4" fill="#fffdd0" style="animation-delay: 0.2s;"/>
-                    <circle class="sparkle" cx="30" cy="70" r="2" fill="#b0e0e6" style="animation-delay: 0.4s;"/>
-                    
-                    <g class="magic-wand-motion">
-                        <!-- 막대기 -->
-                        <rect x="45" y="40" width="10" height="50" rx="5" fill="#a87b7b" />
-                        <!-- 별 모양 머리 -->
-                        <path d="M 50 10 L 58 30 L 80 30 L 62 42 L 68 62 L 50 50 L 32 62 L 38 42 L 20 30 L 42 30 Z" fill="#ffec8b" stroke="#ff8b94" stroke-width="2"/>
-                        <!-- 보석 -->
-                        <circle cx="50" cy="35" r="5" fill="#ffb6c1" />
-                    </g>
-                </svg>
+                <!-- 이모지 요술봉 애니메이션 -->
+                <div class="intro-icon" style="font-size: 80px;">🪄✨</div>
                 <h2>마법을 부리고 있어요...</h2>
-                <p class="subtitle">맛있는 냄새가 공방을 가득 채웁니다! ✨</p>
+                <p class="subtitle">달콤한 향기가 공방을 가득 채웁니다! ✨</p>
                 <br><br>
+            </div>
             </div>
 
             <div id="screen-result" class="screen">
