@@ -166,6 +166,26 @@
             100% { transform: scale(1) rotate(0); }
         }
 
+        /* 새로운 로딩 일러스트 및 애니메이션 */
+        .loading-svg {
+            margin-bottom: 20px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .whisk-motion {
+            transform-origin: 50px 65px;
+            animation: stirAnimation 1s infinite linear;
+        }
+
+        @keyframes stirAnimation {
+            0% { transform: translate(-10px, 0) rotate(-15deg); }
+            25% { transform: translate(0px, 5px) rotate(0deg); }
+            50% { transform: translate(10px, 0) rotate(15deg); }
+            75% { transform: translate(0px, -5px) rotate(0deg); }
+            100% { transform: translate(-10px, 0) rotate(-15deg); }
+        }
+
     </style>
 </head>
 <body>
@@ -192,7 +212,19 @@
 
         <div id="screen-loading" class="screen">
             <br><br>
-            <div class="loading-animation">🥣</div>
+            <!-- SVG 거품기 애니메이션 -->
+            <svg class="loading-svg" viewBox="0 0 100 100">
+                <!-- 보울 -->
+                <path d="M 10 50 C 10 90, 90 90, 90 50 Z" fill="#ffe4e1" stroke="#ff8b94" stroke-width="4"/>
+                <!-- 반죽 -->
+                <ellipse cx="50" cy="50" rx="36" ry="12" fill="#fff0f5" />
+                <!-- 거품기 -->
+                <g class="whisk-motion">
+                    <line x1="65" y1="15" x2="50" y2="65" stroke="#a87b7b" stroke-width="4" stroke-linecap="round"/>
+                    <ellipse cx="50" cy="70" rx="8" ry="12" fill="none" stroke="#a87b7b" stroke-width="3"/>
+                    <ellipse cx="50" cy="70" rx="4" ry="12" fill="none" stroke="#a87b7b" stroke-width="2"/>
+                </g>
+            </svg>
             <h2>반죽을 섞고 있어요...</h2>
             <p class="subtitle">달콤한 냄새가 솔솔 피어납니다~</p>
             <br><br>
@@ -263,9 +295,37 @@
 
         // 디저트 랜덤 생성 로직
         function generateDessert() {
-            // 선택한 재료에 따라 확률을 조정할 수도 있지만, 우선은 랜덤으로 통통 튀게 뽑습니다!
-            const randomIndex = Math.floor(Math.random() * desserts.length);
-            const result = desserts[randomIndex];
+            // 맛과 디저트 이름의 키워드 매핑
+            const flavorMap = {
+                '우베': '우베',
+                '말차': '말차',
+                '딸기': '딸기',
+                '초콜릿': '초코',
+                '바닐라': '바닐라'
+            };
+
+            // 선택된 재료 중 매핑된 맛이 있는지 확인
+            const selectedFlavors = selectedIngredients.filter(ingredient => flavorMap[ingredient]);
+
+            let candidateDesserts = desserts;
+
+            if (selectedFlavors.length > 0) {
+                // 선택된 맛 키워드들을 가져옴
+                const flavorKeywords = selectedFlavors.map(flavor => flavorMap[flavor]);
+                
+                // 디저트 이름에 선택된 맛 키워드가 포함된 것만 필터링
+                const filteredDesserts = desserts.filter(dessert => {
+                    return flavorKeywords.some(keyword => dessert.name.includes(keyword));
+                });
+
+                if (filteredDesserts.length > 0) {
+                    candidateDesserts = filteredDesserts;
+                }
+            }
+
+            // 후보 디저트 배열에서 랜덤으로 하나 선택
+            const randomIndex = Math.floor(Math.random() * candidateDesserts.length);
+            const result = candidateDesserts[randomIndex];
 
             document.getElementById('result-icon').innerText = result.icon;
             document.getElementById('result-name').innerText = result.name;
