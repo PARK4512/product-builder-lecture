@@ -1,14 +1,283 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>몽글몽글 디저트 공방 🍰</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ffb6c1;
+            --soft-pink: #fff0f5;
+            --cream: #fffdd0;
+            --mint: #b0e0e6;
+            --text-color: #6a4b4b;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Jua', sans-serif;
+            background: linear-gradient(135deg, var(--soft-pink), var(--cream));
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
+            text-align: center;
+            position: relative;
+        }
+
+        /* 화면 전환용 클래스 */
+        .screen {
+            display: none;
+            animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            color: #ff8b94;
+        }
+
+        p.subtitle {
+            font-size: 16px;
+            color: #a87b7b;
+            margin-bottom: 25px;
+        }
+
+        /* 재료 그리드 */
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .ingredient {
+            background: white;
+            border: 3px solid #ffe4e1;
+            border-radius: 20px;
+            padding: 15px 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .ingredient .icon {
+            font-size: 30px;
+            /* 실제 손그림을 넣으실 때는 아래 주석을 풀고 img 태그를 사용하세요 */
+            /* background-image: url('your-handdrawn-img.png'); */
+        }
+
+        .ingredient:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.5);
+        }
+
+        .ingredient.selected {
+            border-color: #ff8b94;
+            background: var(--soft-pink);
+            transform: scale(1.05);
+        }
+
+        /* 버튼 스타일 */
+        .btn {
+            background: #ff8b94;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-family: 'Jua', sans-serif;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 139, 148, 0.4);
+            transition: all 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: #ff7480;
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* 로딩 화면 */
+        .loading-animation {
+            font-size: 50px;
+            display: inline-block;
+            animation: spinAndBounce 1.5s infinite ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        /* 결과 화면 */
+        .result-image {
+            font-size: 80px;
+            margin: 20px 0;
+            animation: tada 1s ease;
+        }
+
+        .result-name {
+            font-size: 26px;
+            color: #ff8b94;
+            margin-bottom: 10px;
+        }
+
+        .result-desc {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        /* 통통 튀는 애니메이션 모음 */
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            80% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes spinAndBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes tada {
+            0% { transform: scale(1); }
+            10%, 20% { transform: scale(0.9) rotate(-3deg); }
+            30%, 50%, 70%, 90% { transform: scale(1.2) rotate(3deg); }
+            40%, 60%, 80% { transform: scale(1.2) rotate(-3deg); }
+            100% { transform: scale(1) rotate(0); }
+        }
+
+    </style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+
+    <div class="container">
+        <div id="screen-select" class="screen active">
+            <h1>몽글몽글 디저트 공방</h1>
+            <p class="subtitle">어떤 재료로 디저트를 구워볼까요?</p>
+            
+            <div class="ingredients-grid">
+                <div class="ingredient" data-val="생크림"><span class="icon">☁️</span>생크림</div>
+                <div class="ingredient" data-val="밀가루"><span class="icon">🌾</span>밀가루</div>
+                <div class="ingredient" data-val="버터"><span class="icon">🧈</span>버터</div>
+                <div class="ingredient" data-val="초콜릿"><span class="icon">🍫</span>초콜릿</div>
+                <div class="ingredient" data-val="바닐라"><span class="icon">🌼</span>바닐라</div>
+                <div class="ingredient" data-val="말차"><span class="icon">🍵</span>말차</div>
+                <div class="ingredient" data-val="우베"><span class="icon">🍠</span>우베</div>
+                <div class="ingredient" data-val="딸기"><span class="icon">🍓</span>딸기</div>
+                <div class="ingredient" data-val="설탕"><span class="icon">✨</span>설탕</div>
+            </div>
+
+            <button class="btn" onclick="startBaking()">오븐에 넣기 굽기!</button>
+        </div>
+
+        <div id="screen-loading" class="screen">
+            <br><br>
+            <div class="loading-animation">🥣</div>
+            <h2>반죽을 섞고 있어요...</h2>
+            <p class="subtitle">달콤한 냄새가 솔솔 피어납니다~</p>
+            <br><br>
+        </div>
+
+        <div id="screen-result" class="screen">
+            <h2>짜잔! 완성되었어요 🎀</h2>
+            <div id="result-icon" class="result-image">🍰</div>
+            <div id="result-name" class="result-name">포근한 생크림 케이크</div>
+            <p id="result-desc" class="result-desc">입에서 사르르 녹는 달콤함! 오늘 하루 스트레스를 다 날려줄 거예요.</p>
+            
+            <button class="btn" onclick="resetBaking()">다시 굽기</button>
+        </div>
+    </div>
+
+    <script>
+        // 재료 선택 로직
+        const ingredients = document.querySelectorAll('.ingredient');
+        let selectedIngredients = [];
+
+        ingredients.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('selected');
+                const val = item.getAttribute('data-val');
+                
+                if (item.classList.contains('selected')) {
+                    selectedIngredients.push(val);
+                } else {
+                    selectedIngredients = selectedIngredients.filter(i => i !== val);
+                }
+            });
+        });
+
+        // 디저트 결과 데이터
+        const desserts = [
+            { name: "딸기 생크림 듬뿍 케이크", icon: "🍰", desc: "구름을 먹는 것 같은 포근함! 생크림과 상큼한 딸기의 완벽한 조화예요." },
+            { name: "꾸덕 쫀득 초코 브라우니", icon: "🍫", desc: "기분이 울적할 땐 역시 초코! 진하고 꾸덕한 초콜릿이 가득 들어있어요." },
+            { name: "사르르 말차 롤케이크", icon: "🍵", desc: "쌉싸름하고 달콤한 말차 크림이 입안 가득 퍼지는 부드러운 롤케이크예요." },
+            { name: "보랏빛 우베 마카롱", icon: "💜", desc: "색감마저 사랑스러운 우베 마카롱! 쫀득한 꼬끄와 고소한 필링이 매력적이에요." },
+            { name: "버터 풍미 가득 쿠키", icon: "🍪", desc: "따뜻한 홍차와 함께하면 최고! 겉바속촉 고소한 버터링 쿠키입니다." },
+            { name: "바닐라빈 콕콕 푸딩", icon: "🍮", desc: "탱글탱글 귀여운 푸딩! 입에 넣자마자 바닐라 향이 기분 좋게 퍼져요." }
+        ];
+
+        // 화면 전환 함수
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        // 베이킹 시작 (로딩 및 결과 생성)
+        function startBaking() {
+            if (selectedIngredients.length === 0) {
+                alert("최소 한 가지의 재료를 선택해주세요! 🥺");
+                return;
+            }
+
+            // 로딩 화면 표시
+            showScreen('screen-loading');
+
+            // 2.5초 후 결과 화면 표시 (진짜 오븐에서 굽는 느낌!)
+            setTimeout(() => {
+                generateDessert();
+                showScreen('screen-result');
+            }, 2500);
+        }
+
+        // 디저트 랜덤 생성 로직
+        function generateDessert() {
+            // 선택한 재료에 따라 확률을 조정할 수도 있지만, 우선은 랜덤으로 통통 튀게 뽑습니다!
+            const randomIndex = Math.floor(Math.random() * desserts.length);
+            const result = desserts[randomIndex];
+
+            document.getElementById('result-icon').innerText = result.icon;
+            document.getElementById('result-name').innerText = result.name;
+            document.getElementById('result-desc').innerText = result.desc;
+        }
+
+        // 초기화
+        function resetBaking() {
+            selectedIngredients = [];
+            ingredients.forEach(item => item.classList.remove('selected'));
+            showScreen('screen-select');
+        }
+    </script>
 </body>
 </html>
