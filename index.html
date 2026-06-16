@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>몽글몽글 디저트 공방 🍰</title>
+    <meta name="description" content="나만의 재료를 골라 만드는 따뜻한 디저트 공방. 전문가의 팁과 최고의 페어링을 제공하는 고품질 디저트 레시피 가이드입니다.">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -21,10 +22,59 @@
             background: linear-gradient(135deg, var(--soft-pink), var(--cream));
             color: var(--text-color);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
             overflow-y: auto;
+        }
+
+        /* 헤더 스타일 */
+        header {
+            width: 100%;
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(255, 182, 193, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav {
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            color: #ff8b94;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ff8b94;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 40px 0;
         }
 
         .container {
@@ -36,7 +86,7 @@
             box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
             text-align: center;
             position: relative;
-            margin: 20px;
+            margin-bottom: 40px;
         }
 
         /* 제휴 문의 폼 스타일 */
@@ -95,6 +145,70 @@
             color: #ff8b94;
             margin-bottom: 15px;
             text-align: center;
+        }
+
+        /* 전문가 팁 & 페어링 스타일 */
+        .result-info-box {
+            background: #fffafa;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: left;
+            border: 1px solid #ffe4e1;
+        }
+
+        .result-info-title {
+            font-size: 14px;
+            color: #ff8b94;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .result-info-content {
+            font-size: 14px;
+            color: #a87b7b;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        /* About 섹션 스타일 */
+        .about-section {
+            width: 90%;
+            max-width: 800px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-card h2 {
+            color: #ff8b94;
+            margin-bottom: 20px;
+        }
+
+        .about-card p {
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        /* 푸터 스타일 */
+        footer {
+            width: 100%;
+            background: #f8f9fa;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
         }
 
         /* 화면 전환용 클래스 */
@@ -249,89 +363,132 @@
 </head>
 <body>
 
-    <div class="container">
-        <div id="screen-select" class="screen active">
-            <h1>몽글몽글 디저트 공방</h1>
-            <p class="subtitle">어떤 재료로 디저트를 구워볼까요?</p>
-            
-            <div class="ingredients-grid">
-                <div class="ingredient" data-val="생크림"><span class="icon">☁️</span>생크림</div>
-                <div class="ingredient" data-val="밀가루"><span class="icon">🌾</span>밀가루</div>
-                <div class="ingredient" data-val="버터"><span class="icon">🧈</span>버터</div>
-                <div class="ingredient" data-val="초콜릿"><span class="icon">🍫</span>초콜릿</div>
-                <div class="ingredient" data-val="바닐라"><span class="icon">🌼</span>바닐라</div>
-                <div class="ingredient" data-val="말차"><span class="icon">🍵</span>말차</div>
-                <div class="ingredient" data-val="우베"><span class="icon">🍠</span>우베</div>
-                <div class="ingredient" data-val="딸기"><span class="icon">🍓</span>딸기</div>
-                <div class="ingredient" data-val="설탕"><span class="icon">✨</span>설탕</div>
+    <header>
+        <nav>
+            <a href="#" class="logo">🍰 몽글몽글 공방</a>
+            <div class="nav-links">
+                <a href="#baking-app">디저트 굽기</a>
+                <a href="#about">공방 소개</a>
+                <a href="#contact">제휴 문의</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div id="baking-app" class="container">
+            <div id="screen-select" class="screen active">
+                <h1>몽글몽글 디저트 공방</h1>
+                <p class="subtitle">어떤 재료로 디저트를 구워볼까요?</p>
+                
+                <div class="ingredients-grid">
+                    <div class="ingredient" data-val="생크림"><span class="icon">☁️</span>생크림</div>
+                    <div class="ingredient" data-val="밀가루"><span class="icon">🌾</span>밀가루</div>
+                    <div class="ingredient" data-val="버터"><span class="icon">🧈</span>버터</div>
+                    <div class="ingredient" data-val="초콜릿"><span class="icon">🍫</span>초콜릿</div>
+                    <div class="ingredient" data-val="바닐라"><span class="icon">🌼</span>바닐라</div>
+                    <div class="ingredient" data-val="말차"><span class="icon">🍵</span>말차</div>
+                    <div class="ingredient" data-val="우베"><span class="icon">🍠</span>우베</div>
+                    <div class="ingredient" data-val="딸기"><span class="icon">🍓</span>딸기</div>
+                    <div class="ingredient" data-val="설탕"><span class="icon">✨</span>설탕</div>
+                </div>
+
+                <button class="btn" onclick="startBaking()">오븐에 넣기 굽기!</button>
             </div>
 
-            <button class="btn" onclick="startBaking()">오븐에 넣기 굽기!</button>
+            <div id="screen-loading" class="screen">
+                <br><br>
+                <!-- SVG 거품기 애니메이션 -->
+                <svg class="loading-svg" viewBox="0 0 100 100">
+                    <!-- 보울 -->
+                    <path d="M 10 50 C 10 90, 90 90, 90 50 Z" fill="#ffe4e1" stroke="#ff8b94" stroke-width="4"/>
+                    <!-- 반죽 -->
+                    <ellipse cx="50" cy="50" rx="36" ry="12" fill="#fff0f5" />
+                    <!-- 거품기 -->
+                    <g class="whisk-motion">
+                        <line x1="65" y1="15" x2="50" y2="65" stroke="#a87b7b" stroke-width="4" stroke-linecap="round"/>
+                        <ellipse cx="50" cy="70" rx="8" ry="12" fill="none" stroke="#a87b7b" stroke-width="3"/>
+                        <ellipse cx="50" cy="70" rx="4" ry="12" fill="none" stroke="#a87b7b" stroke-width="2"/>
+                    </g>
+                </svg>
+                <h2>반죽을 섞고 있어요...</h2>
+                <p class="subtitle">달콤한 냄새가 솔솔 피어납니다~</p>
+                <br><br>
+            </div>
+
+            <div id="screen-result" class="screen">
+                <h2>짜잔! 완성되었어요 🎀</h2>
+                <div id="result-icon" class="result-image">🍰</div>
+                <div id="result-name" class="result-name">포근한 생크림 케이크</div>
+                <p id="result-desc" class="result-desc">입에서 사르르 녹는 달콤함! 오늘 하루 스트레스를 다 날려줄 거예요.</p>
+                
+                <!-- 전문가 정보 박스 -->
+                <div class="result-info-box">
+                    <div class="result-info-title">👨‍🍳 파티시에의 꿀팁</div>
+                    <div id="result-tip" class="result-info-content">내용이 표시됩니다.</div>
+                    
+                    <div class="result-info-title">☕ 추천 페어링</div>
+                    <div id="result-pairing" class="result-info-content">내용이 표시됩니다.</div>
+                </div>
+
+                <button class="btn" style="margin-top: 20px;" onclick="resetBaking()">다시 굽기</button>
+            </div>
+
+            <!-- 제휴 문의 섹션 -->
+            <div id="contact" class="contact-section">
+                <h3>🤝 제휴 문의하기</h3>
+                <form action="https://formspree.io/f/xykavekk" method="POST" class="contact-form">
+                    <input type="email" name="email" placeholder="답장받을 이메일 주소" required>
+                    <textarea name="message" placeholder="문의하실 내용을 적어주세요!" required></textarea>
+                    <button type="submit" class="btn btn-small">보내기</button>
+                </form>
+            </div>
+
+            <!-- 댓글 섹션 -->
+            <div class="comments-section">
+                <h3>💬 방명록 & 댓글</h3>
+                <div id="disqus_thread"></div>
+                <script>
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://jueun-1.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
         </div>
 
-        <div id="screen-loading" class="screen">
-            <br><br>
-            <!-- SVG 거품기 애니메이션 -->
-            <svg class="loading-svg" viewBox="0 0 100 100">
-                <!-- 보울 -->
-                <path d="M 10 50 C 10 90, 90 90, 90 50 Z" fill="#ffe4e1" stroke="#ff8b94" stroke-width="4"/>
-                <!-- 반죽 -->
-                <ellipse cx="50" cy="50" rx="36" ry="12" fill="#fff0f5" />
-                <!-- 거품기 -->
-                <g class="whisk-motion">
-                    <line x1="65" y1="15" x2="50" y2="65" stroke="#a87b7b" stroke-width="4" stroke-linecap="round"/>
-                    <ellipse cx="50" cy="70" rx="8" ry="12" fill="none" stroke="#a87b7b" stroke-width="3"/>
-                    <ellipse cx="50" cy="70" rx="4" ry="12" fill="none" stroke="#a87b7b" stroke-width="2"/>
-                </g>
-            </svg>
-            <h2>반죽을 섞고 있어요...</h2>
-            <p class="subtitle">달콤한 냄새가 솔솔 피어납니다~</p>
-            <br><br>
-        </div>
-
-        <div id="screen-result" class="screen">
-            <h2>짜잔! 완성되었어요 🎀</h2>
-            <div id="result-icon" class="result-image">🍰</div>
-            <div id="result-name" class="result-name">포근한 생크림 케이크</div>
-            <p id="result-desc" class="result-desc">입에서 사르르 녹는 달콤함! 오늘 하루 스트레스를 다 날려줄 거예요.</p>
-            
-            <button class="btn" onclick="resetBaking()">다시 굽기</button>
-        </div>
-
-        <!-- 제휴 문의 섹션 -->
-        <div class="contact-section">
-            <h3>🤝 제휴 문의하기</h3>
-            <form action="https://formspree.io/f/xykavekk" method="POST" class="contact-form">
-                <input type="email" name="email" placeholder="답장받을 이메일 주소" required>
-                <textarea name="message" placeholder="문의하실 내용을 적어주세요!" required></textarea>
-                <button type="submit" class="btn btn-small">보내기</button>
-            </form>
-        </div>
-
-        <!-- 댓글 섹션 -->
-        <div class="comments-section">
-            <h3>💬 방명록 & 댓글</h3>
-            <div id="disqus_thread"></div>
-            <script>
-                /**
-                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                /*
-                var disqus_config = function () {
-                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                };
-                */
-                (function() { // DON'T EDIT BELOW THIS LINE
-                var d = document, s = d.createElement('script');
-                s.src = 'https://jueun-1.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        </div>
+        <!-- 공방 소개 섹션 -->
+        <section id="about" class="about-section">
+            <div class="about-card">
+                <h2>🍰 몽글몽글 공방 이야기</h2>
+                <p>
+                    저희 몽글몽글 공방은 단순히 단것을 만드는 곳이 아닙니다.<br>
+                    바쁜 일상 속에서 잠시 멈춰, 나만의 달콤한 순간을 설계하는 공간입니다.<br><br>
+                    모든 레시피는 15년 경력의 수석 파티시에가 엄선한 최상의 재료 조합을 바탕으로 설계되었습니다.<br>
+                    우리는 원재료의 신선함이 디저트의 영혼을 결정한다고 믿으며,<br>
+                    각 재료가 가진 본연의 풍미를 극대화하는 온도를 연구합니다.<br><br>
+                    오늘 당신이 고른 재료에는 당신의 기분이 담겨 있습니다.<br>
+                    우리는 그 마음을 정성스럽게 구워 최고의 페어링과 함께 선물하겠습니다.
+                </p>
+            </div>
+        </section>
     </div>
+
+    <footer>
+        <p>© 2026 몽글몽글 디저트 공방. All rights reserved.</p>
+        <p>본 사이트의 모든 콘텐츠는 전문 파티시에의 감수를 거쳐 제작되었습니다.</p>
+    </footer>
 
     <script>
         // 재료 선택 로직
@@ -353,12 +510,36 @@
 
         // 디저트 결과 데이터
         const desserts = [
-            { name: "딸기 생크림 듬뿍 케이크", icon: "🍰", desc: "구름을 먹는 것 같은 포근함! 생크림과 상큼한 딸기의 완벽한 조화예요." },
-            { name: "꾸덕 쫀득 초코 브라우니", icon: "🍫", desc: "기분이 울적할 땐 역시 초코! 진하고 꾸덕한 초콜릿이 가득 들어있어요." },
-            { name: "사르르 말차 롤케이크", icon: "🍵", desc: "쌉싸름하고 달콤한 말차 크림이 입안 가득 퍼지는 부드러운 롤케이크예요." },
-            { name: "보랏빛 우베 마카롱", icon: "💜", desc: "색감마저 사랑스러운 우베 마카롱! 쫀득한 꼬끄와 고소한 필링이 매력적이에요." },
-            { name: "버터 풍미 가득 쿠키", icon: "🍪", desc: "따뜻한 홍차와 함께하면 최고! 겉바속촉 고소한 버터링 쿠키입니다." },
-            { name: "바닐라빈 콕콕 푸딩", icon: "🍮", desc: "탱글탱글 귀여운 푸딩! 입에 넣자마자 바닐라 향이 기분 좋게 퍼져요." }
+            { 
+                name: "딸기 생크림 듬뿍 케이크", icon: "🍰", desc: "구름을 먹는 것 같은 포근함! 생크림과 상큼한 딸기의 완벽한 조화예요.",
+                tip: "동물성 100% 우유 생크림을 사용하면 느끼하지 않고 고소한 맛을 낼 수 있어요. 딸기는 씻은 후 물기를 완전히 제거해야 크림이 묽어지지 않아요.",
+                pairing: "따뜻한 아메리카노 또는 상큼한 히비스커스 티"
+            },
+            { 
+                name: "꾸덕 쫀득 초코 브라우니", icon: "🍫", desc: "기분이 울적할 땐 역시 초코! 진하고 꾸덕한 초콜릿이 가득 들어있어요.",
+                tip: "반죽을 오븐에서 꺼내기 전, 꼬챙이로 찔렀을 때 약간의 반죽이 묻어 나오는 정도가 가장 쫀득한 상태예요.",
+                pairing: "차가운 우유 또는 진한 바닐라 라떼"
+            },
+            { 
+                name: "사르르 말차 롤케이크", icon: "🍵", desc: "쌉싸름하고 달콤한 말차 크림이 입안 가득 퍼지는 부드러운 롤케이크예요.",
+                tip: "말차 가루는 고운 체에 2~3번 쳐야 뭉침 없이 부드러운 색감을 낼 수 있습니다.",
+                pairing: "맑은 우롱차 또는 고소한 호지차"
+            },
+            { 
+                name: "보랏빛 우베 마카롱", icon: "💜", desc: "색감마저 사랑스러운 우베 마카롱! 쫀득한 꼬끄와 고소한 필링이 매력적이에요.",
+                tip: "마카롱 꼬끄를 구운 후 완전히 식혀야 필링을 채웠을 때 녹지 않고 예쁜 모양을 유지합니다.",
+                pairing: "자스민 티 또는 가벼운 화이트 와인"
+            },
+            { 
+                name: "버터 풍미 가득 쿠키", icon: "🍪", desc: "따뜻한 홍차와 함께하면 최고! 겉바속촉 고소한 버터링 쿠키입니다.",
+                tip: "버터는 실온에서 충분히 말랑해진 상태로 크림화해야 공기가 잘 들어가 바삭한 식감이 살아납니다.",
+                pairing: "다즐링 홍차 또는 로열 밀크티"
+            },
+            { 
+                name: "바닐라빈 콕콕 푸딩", icon: "🍮", desc: "탱글탱글 귀여운 푸딩! 입에 넣자마자 바닐라 향이 기분 좋게 퍼져요.",
+                tip: "캐러멜 시럽을 만들 때 설탕이 녹을 때까지 젓지 말고 기다려야 결정이 생기지 않고 투명해집니다.",
+                pairing: "진한 에스프레소 또는 가벼운 스파클링 와인"
+            }
         ];
 
         // 화면 전환 함수
@@ -423,6 +604,10 @@
             document.getElementById('result-icon').innerText = result.icon;
             document.getElementById('result-name').innerText = result.name;
             document.getElementById('result-desc').innerText = result.desc;
+            
+            // 추가된 꿀팁 및 페어링 정보 업데이트
+            document.getElementById('result-tip').innerText = result.tip;
+            document.getElementById('result-pairing').innerText = result.pairing;
         }
 
         // 초기화
