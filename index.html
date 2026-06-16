@@ -29,13 +29,57 @@
 
         .container {
             width: 90%;
-            max-width: 400px;
+            max-width: 450px;
             background: rgba(255, 255, 255, 0.85);
             border-radius: 30px;
             padding: 30px;
             box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
             text-align: center;
             position: relative;
+            margin: 20px;
+        }
+
+        /* 제휴 문의 폼 스타일 */
+        .contact-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #ffe4e1;
+        }
+
+        .contact-section h3 {
+            font-size: 18px;
+            color: #ff8b94;
+            margin-bottom: 15px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 12px;
+            border: 2px solid #ffe4e1;
+            border-radius: 12px;
+            font-family: 'Jua', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #ff8b94;
+        }
+
+        .contact-form textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        .btn-small {
+            padding: 10px;
+            font-size: 16px;
         }
 
         /* 화면 전환용 클래스 */
@@ -237,6 +281,16 @@
             <p id="result-desc" class="result-desc">입에서 사르르 녹는 달콤함! 오늘 하루 스트레스를 다 날려줄 거예요.</p>
             
             <button class="btn" onclick="resetBaking()">다시 굽기</button>
+        </div>
+
+        <!-- 제휴 문의 섹션 -->
+        <div class="contact-section">
+            <h3>🤝 제휴 문의하기</h3>
+            <form action="https://formspree.io/f/xykavekk" method="POST" class="contact-form">
+                <input type="email" name="email" placeholder="답장받을 이메일 주소" required>
+                <textarea name="message" placeholder="문의하실 내용을 적어주세요!" required></textarea>
+                <button type="submit" class="btn btn-small">보내기</button>
+            </form>
         </div>
     </div>
 
