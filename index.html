@@ -533,9 +533,9 @@
             });
         });
 
-        // 디저트 결과 데이터 (확장 버전)
+        // 디저트 결과 데이터 (대폭 확장 버전 - 35종 이상)
         const desserts = [
-            // 딸기 관련
+            // --- 딸기 시리즈 ---
             { 
                 name: "딸기 생크림 케이크", icon: "🍰", desc: "포근한 시트 사이에 상큼한 딸기가 가득!",
                 tip: "생크림을 휘핑할 때 볼 아래에 얼음물을 받치면 더 단단하고 매끄러운 크림이 돼요.",
@@ -560,10 +560,22 @@
                 pairing: "와플 또는 브라우니",
                 requiredIngredients: ["딸기", "우유", "생크림", "설탕"]
             },
-            
-            // 망고 관련
             { 
-                name: "망고 타르트", icon: "🥧", desc: "바삭한 타르트지에 달콤한 망고가 듬뿍.",
+                name: "딸기 탕후루", icon: "🍓✨", desc: "반짝반짝 설탕 코팅 속에 숨겨진 상큼한 딸기.",
+                tip: "설탕 시럽이 130도 정도 되었을 때 딸기를 아주 빠르게 담가 빼야 바삭해요.",
+                pairing: "시원한 보리차",
+                requiredIngredients: ["딸기", "설탕"]
+            },
+            { 
+                name: "딸기 커스터드 타르트", icon: "🥧", desc: "바삭한 과자 속에 부드러운 커스터드와 딸기.",
+                tip: "타르트지는 차갑게 유지하며 작업해야 구웠을 때 결이 살고 바삭해요.",
+                pairing: "얼그레이 티",
+                requiredIngredients: ["딸기", "밀가루", "버터", "계란", "우유", "설탕"]
+            },
+            
+            // --- 망고 시리즈 ---
+            { 
+                name: "망고 타르트", icon: "🥭🥧", desc: "바삭한 타르트지에 달콤한 망고가 듬뿍.",
                 tip: "타르트지는 차가운 상태에서 구워야 바삭한 식감이 살아나요.",
                 pairing: "트로피컬 에이드",
                 requiredIngredients: ["망고", "밀가루", "버터", "계란", "설탕"]
@@ -580,8 +592,20 @@
                 pairing: "따뜻한 차 한 잔",
                 requiredIngredients: ["망고", "우유", "설탕"]
             },
+            { 
+                name: "망고 푸딩", icon: "🍮", desc: "탱글탱글하고 진한 망고 향이 가득한 푸딩.",
+                tip: "망고를 곱게 갈아 체에 한 번 걸러주면 훨씬 매끄러운 식감이 돼요.",
+                pairing: "코코넛 워터",
+                requiredIngredients: ["망고", "우유", "설탕", "바닐라"]
+            },
+            { 
+                name: "망고 크림 머핀", icon: "🧁", desc: "폭신한 머핀 속에 달콤한 망고 크림.",
+                tip: "머핀 반죽을 너무 많이 젓지 않아야 구웠을 때 퍽퍽하지 않아요.",
+                pairing: "우유",
+                requiredIngredients: ["망고", "밀가루", "계란", "우유", "설탕", "버터"]
+            },
 
-            // 제빵류 (이스트, 소금 활용)
+            // --- 제빵류 (이스트, 소금 활용) ---
             { 
                 name: "우유 식빵", icon: "🍞", desc: "매일 먹어도 질리지 않는 쫄깃하고 담백한 식빵.",
                 tip: "반죽이 두 배로 부풀 때까지 충분히 1차 발효를 시켜주는 것이 핵심이에요.",
@@ -589,7 +613,7 @@
                 requiredIngredients: ["밀가루", "이스트", "소금", "우유", "버터", "설탕"]
             },
             { 
-                name: "소금빵", icon: "🥐", desc: "고소한 버터 풍미와 짭조름한 소금의 만남.",
+                name: "소금빵", icon: "🥐🧂", desc: "고소한 버터 풍미와 짭조름한 소금의 만남.",
                 tip: "버터를 반죽으로 감쌀 때 빈틈이 없어야 버터가 녹아내리지 않고 구멍이 잘 생겨요.",
                 pairing: "아이스 아메리카노",
                 requiredIngredients: ["밀가루", "버터", "이스트", "소금", "우유"]
@@ -600,8 +624,26 @@
                 pairing: "진한 핫초코",
                 requiredIngredients: ["밀가루", "계란", "버터", "우유", "이스트", "소금", "설탕"]
             },
+            { 
+                name: "망고 우유빵", icon: "🥭🍞", desc: "달콤한 망고 과육이 씹히는 부드러운 우유빵.",
+                tip: "망고 조각을 넣을 때 물기를 최대한 제거해야 반죽이 질척이지 않아요.",
+                pairing: "요구르트",
+                requiredIngredients: ["망고", "밀가루", "우유", "이스트", "소금", "설탕", "버터"]
+            },
+            { 
+                name: "딸기 잼빵", icon: "🍓🥯", desc: "직접 만든 딸기 잼이 들어간 달콤한 간식 빵.",
+                tip: "빵이 오븐에서 나오자마자 녹인 버터를 살짝 바르면 더 촉촉해요.",
+                pairing: "흰 우유",
+                requiredIngredients: ["딸기", "밀가루", "이스트", "소금", "설탕", "버터", "우유"]
+            },
+            { 
+                name: "초코 소라빵", icon: "🐚🍫", desc: "아이들이 가장 좋아하는 달콤한 초코 크림 빵.",
+                tip: "빵을 다 구운 후 충분히 식힌 다음에 크림을 채워야 크림이 녹지 않아요.",
+                pairing: "카페라떼",
+                requiredIngredients: ["초콜릿", "밀가루", "우유", "이스트", "소금", "설탕", "계란"]
+            },
 
-            // 초콜릿 & 말차
+            // --- 초콜릿 & 말차 & 바닐라 ---
             { 
                 name: "꾸덕 초코 브라우니", icon: "🍫", desc: "진한 다크 초콜릿의 깊은 풍미.",
                 tip: "너무 오래 굽지 않아야 안쪽이 쫀득한 브라우니가 됩니다.",
@@ -609,7 +651,7 @@
                 requiredIngredients: ["초콜릿", "버터", "밀가루", "계란", "설탕"]
             },
             { 
-                name: "말차 가나슈 케이크", icon: "🍵", desc: "쌉싸름한 말차와 달콤한 초콜릿의 조화.",
+                name: "말차 가나슈 케이크", icon: "🍵🍰", desc: "쌉싸름한 말차와 달콤한 초콜릿의 조화.",
                 tip: "말차 가루는 고운 체에 쳐서 사용해야 뭉침 없이 예쁜 색이 나와요.",
                 pairing: "호지차 또는 녹차",
                 requiredIngredients: ["말차", "초콜릿", "생크림", "밀가루", "계란", "설탕"]
@@ -620,8 +662,38 @@
                 pairing: "우유 또는 라떼",
                 requiredIngredients: ["초콜릿", "바닐라", "밀가루", "버터", "계란", "설탕", "소금"]
             },
+            { 
+                name: "말차 라떼", icon: "🍵🥛", desc: "부드러운 우유 거품과 진한 말차의 만남.",
+                tip: "말차를 소량의 따뜻한 물에 먼저 잘 풀어준 뒤 우유를 넣으세요.",
+                pairing: "단팥빵",
+                requiredIngredients: ["말차", "우유", "설탕"]
+            },
+            { 
+                name: "초코 무스", icon: "🥣🍫", desc: "입에서 사르르 녹는 구름 같은 초콜릿 디저트.",
+                tip: "생크림을 70% 정도만 휘핑해야 무스가 너무 단단해지지 않아요.",
+                pairing: "따뜻한 커피",
+                requiredIngredients: ["초콜릿", "생크림", "계란", "설탕"]
+            },
+            { 
+                name: "바닐라 파운드 케이크", icon: "🍞🌼", desc: "묵직하고 촉촉한 바닐라 향의 파운드 케이크.",
+                tip: "굽는 도중 윗면에 칼집을 내주면 예쁘게 터진 모양을 만들 수 있어요.",
+                pairing: "카페 오레",
+                requiredIngredients: ["바닐라", "밀가루", "버터", "계란", "설탕"]
+            },
+            { 
+                name: "초코칩 스콘", icon: "🍪🍫", desc: "버터 향 가득한 스콘에 초코칩이 콕콕.",
+                tip: "스콘 반죽은 대충 섞어야 구웠을 때 층이 생기고 바삭해집니다.",
+                pairing: "잉글리시 브랙퍼스트 티",
+                requiredIngredients: ["초콜릿", "밀가루", "버터", "우유", "설탕", "계란", "소금"]
+            },
+            { 
+                name: "말차 마카롱", icon: "🍵💗", desc: "진한 말차의 풍미를 느낄 수 있는 쫀득한 마카롱.",
+                tip: "말차 가루는 습기에 취약하므로 보관에 주의하세요.",
+                pairing: "우롱차",
+                requiredIngredients: ["말차", "계란", "설탕"]
+            },
 
-            // 기타 클래식
+            // --- 기타 및 클래식 ---
             { 
                 name: "커스터드 푸딩", icon: "🍮", desc: "탱글탱글하고 부드러운 달콤한 푸딩.",
                 tip: "약한 불에서 천천히 익혀야 기포 없이 매끄러운 푸딩이 됩니다.",
@@ -629,28 +701,58 @@
                 requiredIngredients: ["계란", "우유", "설탕", "바닐라"]
             },
             { 
-                name: "버터 쿠키", icon: "🧈", desc: "버터의 풍미가 입안 가득 퍼지는 클래식 쿠키.",
+                name: "버터 쿠키", icon: "🧈🍪", desc: "버터의 풍미가 입안 가득 퍼지는 클래식 쿠키.",
                 tip: "실온 상태의 버터를 사용해야 크림화가 잘 되어 바삭해집니다.",
                 pairing: "다즐링 홍차",
                 requiredIngredients: ["밀가루", "버터", "계란", "설탕", "소금"]
             },
             { 
-                name: "바닐라 파운드 케이크", icon: "🍞", desc: "묵직하고 촉촉한 바닐라 향의 파운드 케이크.",
-                tip: "굽는 도중 윗면에 칼집을 내주면 예쁘게 터진 모양을 만들 수 있어요.",
-                pairing: "카페 오레",
-                requiredIngredients: ["바닐라", "밀가루", "버터", "계란", "설탕"]
+                name: "바닐라 아이스크림", icon: "🍦🌼", desc: "가장 기본이 되는 깔끔하고 부드러운 맛.",
+                tip: "바닐라 빈을 직접 긁어 넣으면 검은 점들이 보이면서 향이 훨씬 깊어져요.",
+                pairing: "갓 구운 브라우니",
+                requiredIngredients: ["바닐라", "우유", "생크림", "설탕", "계란"]
             },
             { 
-                name: "말차 라떼", icon: "🍵", desc: "부드러운 우유 거품과 진한 말차의 만남.",
-                tip: "말차를 소량의 따뜻한 물에 먼저 잘 풀어준 뒤 우유를 넣으세요.",
-                pairing: "단팥빵",
-                requiredIngredients: ["말차", "우유", "설탕"]
+                name: "계란 과자", icon: "🥚🍪", desc: "고소한 계란 향이 가득한 추억의 과자.",
+                tip: "반죽을 짤 주머니로 작고 일정하게 짜야 고르게 잘 익어요.",
+                pairing: "따뜻한 우유",
+                requiredIngredients: ["계란", "밀가루", "버터", "설탕", "바닐라"]
             },
             { 
-                name: "초코 무스", icon: "🥣", desc: "입에서 사르르 녹는 구름 같은 초콜릿 디저트.",
-                tip: "생크림을 70% 정도만 휘핑해야 무스가 너무 단단해지지 않아요.",
-                pairing: "브랜디 또는 진한 커피",
-                requiredIngredients: ["초콜릿", "생크림", "계란", "설탕"]
+                name: "생크림 스콘", icon: "🍪☁️", desc: "버터 대신 생크림으로 만들어 부드럽고 촉촉한 스콘.",
+                tip: "반죽을 냉장고에서 30분 정도 휴지시킨 뒤 구우면 더 맛있어요.",
+                pairing: "딸기 잼",
+                requiredIngredients: ["밀가루", "생크림", "설탕", "소금"]
+            },
+            { 
+                name: "초코 생크림 케이크", icon: "🍫🍰", desc: "달콤한 초코 시트와 부드러운 생크림의 만남.",
+                tip: "초콜릿을 중탕할 때 물이 들어가지 않게 주의하세요.",
+                pairing: "시원한 우유",
+                requiredIngredients: ["초콜릿", "생크림", "밀가루", "계란", "설탕"]
+            },
+            { 
+                name: "말차 생크림 케이크", icon: "🍵🍰", desc: "쌉싸름한 말차 시트와 고소한 생크림.",
+                tip: "시트에 말차 시럽을 살짝 바르면 더 촉촉하고 향이 진해져요.",
+                pairing: "따뜻한 녹차",
+                requiredIngredients: ["말차", "생크림", "밀가루", "계란", "설탕"]
+            },
+            { 
+                name: "바닐라 생크림 케이크", icon: "🌼🍰", desc: "향긋한 바닐라 향이 일품인 기본 생크림 케이크.",
+                tip: "질 좋은 바닐라 익스트랙을 사용하면 맛의 차원이 달라집니다.",
+                pairing: "모든 종류의 티",
+                requiredIngredients: ["바닐라", "생크림", "밀가루", "계란", "설탕"]
+            },
+            { 
+                name: "망고 생크림 샌드", icon: "🥪🥭", desc: "폭신한 빵 사이에 망고와 생크림을 듬뿍.",
+                tip: "샌드위치를 만든 후 랩으로 감싸 냉장고에 잠시 두면 잘랐을 때 단면이 예뻐요.",
+                pairing: "망고 주스",
+                requiredIngredients: ["망고", "생크림", "밀가루", "우유", "설탕"]
+            },
+            { 
+                name: "딸기 생크림 샌드", icon: "🥪🍓", desc: "신선한 딸기가 쏙쏙 박힌 달콤한 샌드위치.",
+                tip: "딸기의 크기를 일정하게 맞춰야 샌드가 평평하고 예쁘게 만들어져요.",
+                pairing: "딸기 우유",
+                requiredIngredients: ["딸기", "생크림", "밀가루", "우유", "설탕"]
             }
         ];
 
@@ -686,15 +788,31 @@
 
         // 디저트 랜덤 생성 로직
         function generateDessert() {
-            // 사용자가 선택한 '모든' 재료가 레시피의 필수 재료에 포함되는지 확인 (엄격한 매칭)
+            // 1. 완전 일치 (사용자가 선택한 '모든' 재료가 레시피의 필수 재료에 포함되는지 확인)
             let matchingDesserts = desserts.filter(dessert => {
                 return selectedIngredients.every(ingredient => dessert.requiredIngredients.includes(ingredient));
             });
 
             let result;
 
-            // 매칭되는 디저트가 없을 경우의 예외 처리 (창작 디저트)
+            // 2. 만약 완전 일치가 없다면, 스마트 부분 매칭 (선택한 재료가 가장 많이 포함된 순서대로 후보군 추출)
             if (matchingDesserts.length === 0) {
+                const candidatesWithCount = desserts.map(dessert => {
+                    const matchCount = selectedIngredients.filter(ing => dessert.requiredIngredients.includes(ing)).length;
+                    return { ...dessert, matchCount };
+                }).filter(d => d.matchCount > 0);
+
+                if (candidatesWithCount.length > 0) {
+                    // 가장 많은 재료가 일치하는 최대 개수 찾기
+                    const maxMatches = Math.max(...candidatesWithCount.map(d => d.matchCount));
+                    // 최대 개수와 일치하는 디저트들만 매칭 목록으로 설정
+                    matchingDesserts = candidatesWithCount.filter(d => d.matchCount === maxMatches);
+                }
+            }
+
+            // 3. 결과 결정
+            if (matchingDesserts.length === 0) {
+                // 여전히 결과가 없다면 (거의 없겠지만) 창작 디저트로 안내
                 result = {
                     name: "요정의 비밀 창작 디저트",
                     icon: "✨",
@@ -704,6 +822,19 @@
                     requiredIngredients: []
                 };
             } else {
+                // 매칭된 풀에서 랜덤 선택
+                const randomIndex = Math.floor(Math.random() * matchingDesserts.length);
+                result = matchingDesserts[randomIndex];
+            }
+
+            document.getElementById('result-icon').innerText = result.icon;
+            document.getElementById('result-name').innerText = result.name;
+            document.getElementById('result-desc').innerText = result.desc;
+            
+            // 추가된 꿀팁 및 페어링 정보 업데이트
+            document.getElementById('result-tip').innerText = result.tip;
+            document.getElementById('result-pairing').innerText = result.pairing;
+        }
                 // 매칭된 풀에서 랜덤 선택
                 const randomIndex = Math.floor(Math.random() * matchingDesserts.length);
                 result = matchingDesserts[randomIndex];
