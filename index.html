@@ -357,6 +357,19 @@
             100% { transform: translate(-10px, 0) rotate(-15deg); }
         }
 
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .intro-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: floating 2s ease-in-out infinite;
+        }
+
     </style>
 </head>
 <body>
@@ -374,7 +387,18 @@
 
     <div class="main-content">
         <div id="baking-app" class="container">
-            <div id="screen-select" class="screen active">
+            <!-- 인트로 화면 -->
+            <div id="screen-intro" class="screen active">
+                <div class="intro-icon">🧑‍🍳✨</div>
+                <h1 style="color: #ff8b94; font-size: 32px;">안녕! 몽글몽글 공방이야 🎈</h1>
+                <p class="subtitle" style="font-size: 18px; margin-bottom: 30px;">
+                    오늘은 어떤 맛있는 디저트를 만들어볼까?<br>
+                    너만의 상상력을 마음껏 발휘해봐!
+                </p>
+                <button class="btn" onclick="startAdventure()">👉 빵 굽기 시작하기 👈</button>
+            </div>
+
+            <div id="screen-select" class="screen">
                 <h1>몽글몽글 디저트 공방</h1>
                 <p class="subtitle">어떤 재료로 디저트를 구워볼까요?</p>
                 
@@ -425,10 +449,10 @@
                 
                 <!-- 전문가 정보 박스 -->
                 <div class="result-info-box">
-                    <div class="result-info-title">👨‍🍳 파티시에의 꿀팁</div>
+                    <div class="result-info-title">✨ 요정의 마법 꿀팁</div>
                     <div id="result-tip" class="result-info-content">내용이 표시됩니다.</div>
                     
-                    <div class="result-info-title">☕ 추천 페어링</div>
+                    <div class="result-info-title">🥤 추천 짝꿍 음료</div>
                     <div id="result-pairing" class="result-info-content">내용이 표시됩니다.</div>
                 </div>
 
@@ -473,15 +497,15 @@
         <!-- 공방 소개 섹션 -->
         <section id="about" class="about-section">
             <div class="about-card">
-                <h2>🍰 몽글몽글 공방 이야기</h2>
+                <h2>🎈 몽글몽글 공방 이야기</h2>
                 <p>
-                    저희 몽글몽글 공방은 단순히 단것을 만드는 곳이 아닙니다.<br>
-                    바쁜 일상 속에서 잠시 멈춰, 나만의 달콤한 순간을 설계하는 공간입니다.<br><br>
-                    모든 레시피는 15년 경력의 수석 파티시에가 엄선한 최상의 재료 조합을 바탕으로 설계되었습니다.<br>
-                    우리는 원재료의 신선함이 디저트의 영혼을 결정한다고 믿으며,<br>
-                    각 재료가 가진 본연의 풍미를 극대화하는 온도를 연구합니다.<br><br>
-                    오늘 당신이 고른 재료에는 당신의 기분이 담겨 있습니다.<br>
-                    우리는 그 마음을 정성스럽게 구워 최고의 페어링과 함께 선물하겠습니다.
+                    안녕, 꼬마 요리사들! 환영해!<br>
+                    여기는 무엇이든 뚝딱 만들어내는 마법의 몽글몽글 공방이야.<br><br>
+                    우리가 고른 재료들이 오븐 속에서 춤을 추면,<br>
+                    세상에서 제일 달콤하고 맛있는 디저트로 변신한단다!<br><br>
+                    구름 같은 생크림, 달콤한 딸기, 짭조름한 소금까지...<br>
+                    오늘은 어떤 재료들로 마법을 부려볼까?<br>
+                    너희들의 상상력으로 가득 채워진 멋진 디저트를 기대할게! 💖
                 </p>
             </div>
         </section>
@@ -489,7 +513,6 @@
 
     <footer>
         <p>© 2026 몽글몽글 디저트 공방. All rights reserved.</p>
-        <p>본 사이트의 모든 콘텐츠는 전문 파티시에의 감수를 거쳐 제작되었습니다.</p>
     </footer>
 
     <script>
@@ -639,6 +662,11 @@
             document.getElementById(screenId).classList.add('active');
         }
 
+        // 인트로에서 시작하기
+        function startAdventure() {
+            showScreen('screen-select');
+        }
+
         // 베이킹 시작 (로딩 및 결과 생성)
         function startBaking() {
             if (selectedIngredients.length === 0) {
@@ -668,11 +696,12 @@
             // 매칭되는 디저트가 없을 경우의 예외 처리 (창작 디저트)
             if (matchingDesserts.length === 0) {
                 result = {
-                    name: "파티시에의 비밀 창작 디저트",
+                    name: "요정의 비밀 창작 디저트",
                     icon: "✨",
                     desc: "선택하신 독창적인 재료 조합으로 세상에 없던 새로운 디저트가 탄생했어요!",
                     tip: "때로는 정해진 레시피를 벗어나는 과감한 도전이 최고의 맛을 만들어내기도 합니다.",
-                    pairing: "모험심을 자극하는 스파클링 워터"
+                    pairing: "모험심을 자극하는 스파클링 워터",
+                    requiredIngredients: []
                 };
             } else {
                 // 매칭된 풀에서 랜덤 선택
